@@ -43,8 +43,8 @@ function getValuesFromLS(){
     let q9 = window.localStorage.getItem('Would you describe yourself as someone who usually gets distracted easily');
     let q10 = window.localStorage.getItem('Do you find it difficult to focus your attention while reading');
     csvOutput="UserName"+","+ userName+ "\n"+"Date"+","+studyDate+"\n"+"Consent"+","+consent+"\n"+"grade"+","+grade+"\n"+ preNavonArray+ "reading"+ ","+reading+","+ readingCode+"\n"+postNavonArray;
-    csvOutput=csvOutput + "How well do you think you did, out of 100% (with 1 being terrible, and 100 being perfect)"+","+q1+"\n"; 
-    csvOutput=csvOutput + "In 1-2 sentences, what do you think this experiment was testing"+","+q2+"\n"; 
+    csvOutput=csvOutput + "How well do you think you did out of 100% (with 1 being terrible and 100 being perfect)"+","+q1+"\n"; 
+    csvOutput=csvOutput + "In 1-2 sentences what do you think this experiment was testing"+","+q2+"\n"; 
     csvOutput=csvOutput + "We know it is generally difficult to stay focused in these online experiments.  On a scale of 1-100..."+","+q3+"\n"; 
     csvOutput=csvOutput + "Any other comment or question"+","+q4+"\n"; 
     csvOutput=csvOutput + "How would you describe your ability to read English"+","+q5+"\n"; 
