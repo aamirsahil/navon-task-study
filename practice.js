@@ -6,20 +6,19 @@ let diff;
 
 let current_img = '';
 let mapping = {
-    "./img/0.png": 'm',
-    "./img/1.png": 'z',
-    "./img/2.png": 'z',
+    "./img/0.png": 'z',
+    "./img/1.png": 'm',
+    "./img/2.png": 'm',
     "./img/3.png": 'm',
-    "./img/4.png": 'z',
+    "./img/4.png": 'm',
     "./img/5.png": 'm',
-    "./img/6.png": 'z',
-    "./img/7.png": 'm',
+    "./img/6.png": 'm',
+    "./img/7.png": 'z',
     "./img/8.png": 'z',
-    "./img/9.png": 'm',
+    "./img/9.png": 'z',
     "./img/10.png": 'z',
-    "./img/11.png": 'm',
-    "./img/12.png": 'm',
-    "./img/fixation.png": 'z'
+    "./img/11.png": 'z',
+    "./img/12.png": 'z'
 }
 
 
