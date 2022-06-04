@@ -92,7 +92,7 @@ document.addEventListener('keypress', e => {
             if (counter < 11) {
                 preNavon[counter][2] = e.key;
                 stopTimer();
-                checkKeyPress('m`')
+                checkKeyPress('m')
                 logValues();
                 displayValues();
                 console.log("m key is pressed");
@@ -138,8 +138,8 @@ function showToasNotificationWithColor(isCorrect) {
     // Add the "show" class to DIV
     x.className = "show";
 
-    // After 3 seconds, remove the show class from DIV
-    setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
+    // // After 3 seconds, remove the show class from DIV
+    // setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
 }
 
 function startTimer() {
