@@ -25,7 +25,7 @@ function displayFromLocal(){
     console.log(q2);
     console.log(q3);
     console.log(q4);
-    window.location.href="feedback-2.html";
+    window.location.href="thankyou.html";
 }
 
 function removeFromLocal(){

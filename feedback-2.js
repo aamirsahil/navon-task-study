@@ -21,7 +21,7 @@ function storeIntro(q1, q2, q3, q4, q5, q6){
 }
 
 function displayFromLocal(){
-    window.location.href="thankyou.html";
+    window.location.href="grade.html";
 }
 
 function removeFromLocal(){

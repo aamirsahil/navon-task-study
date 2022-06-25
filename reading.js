@@ -29,22 +29,18 @@ function random(a, A) {
 
 function gradeBasedPassage(){
     let gradeId;
-    if(grade==='6'){
-        gradeId = random(0, 1);
+    if(grade==='9'){
+        gradeId = random(0, 2);
         console.log(gradeId);
         readingCard.innerText=passageText[gradeId];
         passageCode=gradeId;
     }
-    if(grade==='7'){
-        gradeId = random(2, 3);
+    if(grade==='10'){
+        gradeId = random(3, 5);
         readingCard.innerText=passageText[gradeId];
         passageCode=gradeId;
     }
-    if(grade==='8'){
-        gradeId = random(4, 5);
-        readingCard.innerText=passageText[gradeId];
-        passageCode=gradeId;
-    }
+    window.localStorage.setItem('paragraph_type', (gradeId % 2 == 0) ? 'Text Book' : 'Modified');
 }
 
 gradeBasedPassage();
