@@ -67,7 +67,7 @@ let diff;
 function stopTimer(){
     diff=Date.now()-sTime;
     window.localStorage.setItem("reading", diff);
-    window.localStorage.setItem("reading-passageCode", passageCode);
+    window.localStorage.setItem("reading-passageCode", passageText[passageCode]);
 }
 
 

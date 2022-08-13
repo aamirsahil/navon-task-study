@@ -1,3 +1,154 @@
+const key_answers = {
+    "24": {
+        "type": "Global",
+        "key": "z"
+    },
+    "25": {
+        "type": "Local",
+        "key": "m"
+    },
+    "26": {
+        "type": "Local",
+        "key": "m"
+    },
+    "27": {
+        "type": "Local",
+        "key": "m"
+    },
+    "20": {
+        "type": "Global",
+        "key": "z"
+    },
+    "21": {
+        "type": "Local",
+        "key": "z"
+    },
+    "22": {
+        "type": "Local",
+        "key": "z"
+    },
+    "23": {
+        "type": "Local",
+        "key": "z"
+    },
+    "28": {
+        "type": "Global",
+        "key": "m"
+    },
+    "29": {
+        "type": "Global",
+        "key": "m"
+    },
+    "1": {
+        "type": "Local",
+        "key": "m"
+    },
+    "0": {
+        "type": "Global",
+        "key": "z"
+    },
+    "3": {
+        "type": "Local",
+        "key": "m"
+    },
+    "2": {
+        "type": "Local",
+        "key": "m"
+    },
+    "5": {
+        "type": "Global",
+        "key": "m"
+    },
+    "4": {
+        "type": "Global",
+        "key": "m"
+    },
+    "7": {
+        "type": "Global",
+        "key": "z"
+    },
+    "6": {
+        "type": "Global",
+        "key": "m"
+    },
+    "9": {
+        "type": "Local",
+        "key": "z"
+    },
+    "8": {
+        "type": "Global",
+        "key": "z"
+    },
+    "11": {
+        "type": "Local",
+        "key": "z"
+    },
+    "10": {
+        "type": "Local",
+        "key": "z"
+    },
+    "13": {
+        "type": "Local",
+        "key": "m"
+    },
+    "12": {
+        "type": "Global",
+        "key": "z"
+    },
+    "15": {
+        "type": "Local",
+        "key": "m"
+    },
+    "14": {
+        "type": "Local",
+        "key": "m"
+    },
+    "17": {
+        "type": "Global",
+        "key": "m"
+    },
+    "16": {
+        "type": "Global",
+        "key": "m"
+    },
+    "19": {
+        "type": "Global",
+        "key": "z"
+    },
+    "18": {
+        "type": "Global",
+        "key": "m"
+    },
+    "31": {
+        "type": "Global",
+        "key": "z"
+    },
+    "30": {
+        "type": "Global",
+        "key": "m"
+    },
+    "35": {
+        "type": "Local",
+        "key": "z"
+    },
+    "34": {
+        "type": "Local",
+        "key": "z"
+    },
+    "33": {
+        "type": "Local",
+        "key": "z"
+    },
+    "32": {
+        "type": "Global",
+        "key": "z"
+    }
+}
+
+let correct_response = {};
+let csv_data = []; // shown_image, correct_answer, key_pressed, global/local, time, is correct
+
+
 const navonCard=document.getElementById('navonImg');
 
 let counter=0;
@@ -47,11 +198,13 @@ function showPrompt(imgId) {
 }
 
 document.addEventListener('keypress', e =>{
+    correct_response = key_answers[promptId[counter]];
     switch (e.key){
         case 'z':
             if (counter<11){
                 postNavon[counter][2]=e.key;
-                stopTimer();
+                const diff = stopTimer();
+                csv_data.push([`${promptId[counter]}.png`, correct_response.key, e.key, correct_response.type, diff, correct_response.key == e.key])
                 logValues();
                 displayValues();
                 console.log("z key is pressed");
@@ -62,7 +215,8 @@ document.addEventListener('keypress', e =>{
             }
         else{
                 postNavon[counter][2]=e.key;
-                stopTimer();
+                const diff = stopTimer();
+                csv_data.push([`${promptId[counter]}.png`, correct_response.key, e.key, correct_response.type, diff, correct_response.key == e.key])
                 logValues();
                 displayValues();
                 window.open("./feedback.html","_self");
@@ -70,7 +224,8 @@ document.addEventListener('keypress', e =>{
     case 'm':
         if (counter<11){
             postNavon[counter][2]=e.key;
-            stopTimer();
+            const diff = stopTimer();
+            csv_data.push([`${promptId[counter]}.png`, correct_response.key, e.key, correct_response.type, diff, correct_response.key == e.key])
             logValues();
             displayValues();
             console.log("m key is pressed");
@@ -81,7 +236,8 @@ document.addEventListener('keypress', e =>{
         }
     else{
             postNavon[counter][2]=e.key;
-            stopTimer();
+            const diff = stopTimer();
+            csv_data.push([`${promptId[counter]}.png`, correct_response.key, e.key, correct_response.type, diff, correct_response.key == e.key])
             logValues();
             displayValues();
             window.open("./feedback.html","_self");
@@ -95,13 +251,13 @@ function startTimer(){
 }
 
 function stopTimer(){
-   diff=Date.now()-sTime;
-   postNavon[counter][3]=diff;
-    
-}
+    diff=Date.now()-sTime;
+    postNavon[counter][3]=diff;
+    return diff;
+ }
 
-function logValues(){
-    let postNavonToString=JSON.stringify(postNavon);
+ function logValues(){
+    let postNavonToString=JSON.stringify(csv_data);
     window.localStorage.setItem("postNavon", postNavonToString);
 }
 
@@ -112,7 +268,10 @@ function displayValues(){
 
 
 function shuffleImgId(){
-    let imgId= [0, 1, 2,3,4,5,6,7,8,9,10,11];
+    let imgId= [];
+    for (let i=0; i<36; i++) {
+        imgId.push(i)
+    }
     let newId= [];
     while (imgId.length!==0){
         let randomIndex=Math.floor(Math.random()*imgId.length );
@@ -120,7 +279,7 @@ function shuffleImgId(){
         imgId.splice(randomIndex,1);
     }
     imgId=newId;
-    return imgId;    
+    return imgId.slice(0,12);    
 }
 
 

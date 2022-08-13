@@ -17,11 +17,11 @@ function getValuesFromLS() {
     let paragraph_type = window.localStorage.getItem("paragraph_type");
     preNavon = JSON.parse(preNavon);
     console.log(preNavon);
+    const headers = ['image', 'correct answer', 'key pressed', 'type', 'time', 'is correct?'].join(',')
     let preNavonArray = "";
-    for (let i = 0; i < 12; i++) {
-        preNavonArray += preNavon[i] + "," + "pre" + "\n";
-
-    }
+    preNavon.forEach(x => {
+        preNavonArray = preNavonArray + x.join(',') + '\n'
+    })
     console.log(preNavonArray);
     let reading = window.localStorage.getItem("reading");
     let readingCode = window.localStorage.getItem("reading-passageCode");
@@ -29,10 +29,9 @@ function getValuesFromLS() {
     postNavon = JSON.parse(postNavon);
     console.log(postNavon);
     let postNavonArray = "";
-    for (let i = 0; i < 12; i++) {
-        postNavonArray += postNavon[i] + "," + "post" + "\n";
-
-    }
+    postNavon.forEach(x => {
+        postNavonArray = preNavonArray + x.join(',') + '\n'
+    })
     let q1 = window.localStorage.getItem("q1");
     let q2 = window.localStorage.getItem("q2");
     let q3 = window.localStorage.getItem("q3");
@@ -43,7 +42,10 @@ function getValuesFromLS() {
     let q8 = window.localStorage.getItem('What medium of instruction does your teacher follow in class');
     let q9 = window.localStorage.getItem('Would you describe yourself as someone who usually gets distracted easily');
     let q10 = window.localStorage.getItem('Do you find it difficult to focus your attention while reading');
-    csvOutput = "UserName" + "," + userName + "\n" + "Date" + "," + studyDate + "\n" + `Paragraph Type, ${paragraph_type}` + "\n" + "Consent" + "," + consent + "\n" + "grade" + "," + grade + "\n" + preNavonArray + "reading" + "," + reading + "," + readingCode + "\n" + postNavonArray;
+    csvOutput = "UserName" + "," + userName + "\n" + "Date" + "," + studyDate + "\n" + `Paragraph Type, ${paragraph_type}` + "\n" + "Consent" + "," + consent + "\n" + "grade" + "," + grade + "\n";
+    csvOutput = csvOutput + "reading" + "," + reading + "," + readingCode + "\n\n";
+    csvOutput = csvOutput + 'Pre Navon \n' + headers + '\n' + preNavonArray + '\n';
+    csvOutput = csvOutput + 'Post Navon \n' + headers + '\n' + postNavonArray + '\n';
     csvOutput = csvOutput + "How well do you think you did out of 10% (with 1 being terrible and 10 being perfect)" + "," + q1 + "\n";
     csvOutput = csvOutput + "In 1-2 sentences what do you think this experiment was testing" + "," + q2 + "\n";
     csvOutput = csvOutput + "We know it is generally difficult to stay focused in these online experiments.  On a scale of 1-10..." + "," + q3 + "\n";

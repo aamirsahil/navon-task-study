@@ -1,7 +1,6 @@
 *{
     margin:0;
     padding: 0;
-    box-sizing: border-box;
 }
 
 body{
@@ -26,7 +25,6 @@ body{
     padding: 10px;
     margin:10px;
     line-height: 1.2;
- 
 }
 
 .navon-intro{
