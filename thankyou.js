@@ -12,9 +12,10 @@ function getValuesFromLS() {
     let userName = window.localStorage.getItem("userName");
     let studyDate = window.localStorage.getItem("studyDate");
     let consent = window.localStorage.getItem("consent");
-    let grade = window.localStorage.getItem("grade");
+    let grade = 9;
     let preNavon = window.localStorage.getItem("preNavon");
     let paragraph_type = window.localStorage.getItem("paragraph_type");
+    let paragraph_id = window.localStorage.getItem("passage");
     preNavon = JSON.parse(preNavon);
     console.log(preNavon);
     const headers = ['image', 'correct answer', 'key pressed', 'type', 'time', 'is correct?'].join(',')
@@ -42,7 +43,7 @@ function getValuesFromLS() {
     let q8 = window.localStorage.getItem('What medium of instruction does your teacher follow in class');
     let q9 = window.localStorage.getItem('Would you describe yourself as someone who usually gets distracted easily');
     let q10 = window.localStorage.getItem('Do you find it difficult to focus your attention while reading');
-    csvOutput = "UserName" + "," + userName + "\n" + "Date" + "," + studyDate + "\n" + `Paragraph Type, ${paragraph_type}` + "\n" + "Consent" + "," + consent + "\n" + "grade" + "," + grade + "\n";
+    csvOutput = "UserName" + "," + userName + "\n" + "Date" + "," + studyDate + "\n" + `Paragraph Type, ${paragraph_type}` + `Paragraph Id, ${paragraph_id}` + "\n" + "Consent" + "," + consent + "\n" + "grade" + "," + grade + "\n";
     csvOutput = csvOutput + "reading" + "," + reading + "," + readingCode + "\n\n";
     csvOutput = csvOutput + 'Pre Navon \n' + headers + '\n' + preNavonArray + '\n';
     csvOutput = csvOutput + 'Post Navon \n' + headers + '\n' + postNavonArray + '\n';
@@ -85,7 +86,7 @@ function downloadCSV(csv_data) {
 
     // Download csv file
     let t = moment().format('YYYY-MM-DD-HHmm-ss');
-    temp_link.download = t + `- ${window.localStorage.getItem("userName")} - ${window.localStorage.getItem("paragraph_type")}`  + ".csv";
+    temp_link.download = t + `- ${window.localStorage.getItem("userName")} - ${window.localStorage.getItem("paragraph_type")} - ${window.localStorage.getItem("paragraph_id")}`  + ".csv";
     var url = window.URL.createObjectURL(CSVFile);
     temp_link.href = url;
 
