@@ -7,12 +7,14 @@ btnCompRead.style.visibility = "hidden";
 let grade = 9;
 
 let passageText = [ 
-    [`The Golgi apparatus, first described by Camillo Golgi, consists of a system of membrane-bound vesicles (flattened sacs) arranged approximately parallel to each other in stacks called cisterns. These membranes often have connections with the membranes of ER and therefore constitute another portion of a complex cellular membrane system. The material synthesised near the Endoplasmic Reticulum is packaged and dispatched to various targets inside and outside the cell through the Golgi apparatus. Its functions include the storage, modification, and packaging of products in vesicles. In some cases, complex sugars may be made from simple sugars in the Golgi apparatus. The Golgi apparatus is also involved in the formation of lysosomes.`],
-    [`An important characteristic of all communities is that their composition and structure constantly change in response to the changing environmental conditions. This change is orderly and sequential, parallel with the changes in the physical environment. These changes lead finally to a community that is in near equilibrium with the environment and that is called a climax community. The gradual and fairly predictable change in the species composition of a given area is called ecological succession. During succession some species colonise an area and their population become more numerous whereas populations of other species decline and even disappear.`],
-    [`Carbon and energy requirements of the autotrophic organism are fulfilled by photosynthesis. It is the process by which autotrophs take in substances from the outside and convert them into stored forms of energy. This material is taken in the form of carbon dioxide and water which is converted into carbohydrates in the presence of sunlight and chlorophyll. Carbohydrates are utilised for providing energy to the plant. The carbohydrates which are not used immediately are stored in the form of starch, which serves as the internal energy reserve to be used as and when required by the plant. A somewhat similar situation is seen in us where some of the energy derived from the food we eat is stored in our body in the form of glycogen.`],
+    [`A system of membrane-bound vesicles (flattened sacs) arranged approximately parallel to each other in stacks called cisterns is called the Golgi apparatus. It was first described by Camillo Golgi. These membranes often are connected with the membranes of ER and therefore constitute another portion of a complex cellular membrane system. The Golgi apparatus packages and dispatches the material synthesised near the Endoplasmic Reticulum to various targets inside and outside the cell. It stores, modifies and packages products in vesicles. In some cases, the Golgi apparatus may make complex sugars from simple sugars. The Golgi apparatus is also involved in the formation of lysosomes.`],
+    [`The way all communities are composed and structured constantly changes as environmental conditions change. This is an important characteristic of all communities.  This change occurs in an order and a sequence, as the physical environment changes. A community that is in near equilibrium with the environment is finally formed due to these changes. It is called a climax community. The species composition of a given area changes gradually and in a fairly predictable way, this is called ecological succession. Some species colonise an area during succession and their population become more numerous whereas populations of other species decline and even disappear.`],
+    [`The autotrophic organism fulfils its Carbon and energy requirements by photosynthesis. Autotrophs take in substances from the outside and convert them into stored forms of energy in this process. The plant takes this material in the form of carbon dioxide and water and converts it into carbohydrates when sunlight and chlorophyll are present. The plants use these carbohydrates to provide them with energy. The plant stores the carbohydrates which are not used immediately in the form of starch and uses them as internal energy reserves as and when required. In a somewhat similar situation we store some of the energy derived from the food we eat in our body in the form of glycogen.`]
 ];
 
  let passageCode=window.localStorage.getItem("passage");
+ console.log(passageCode);
+ window.localStorage.setItem('paragraph_type', 'Text Book');
  readingCard.innerText=passageText[passageCode];
 //  let passageId=window.localStorage.getItem("passage"); // this generates the random index
  
@@ -38,7 +40,6 @@ function gradeBasedPassage(){
         readingCard.innerText=passageText[gradeId];
         passageCode=gradeId;
     }
-    window.localStorage.setItem('paragraph_type', 'Text Book');
 }
 
 // gradeBasedPassage();
